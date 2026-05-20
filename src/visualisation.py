@@ -14,25 +14,32 @@ def plot_prices(prices: pd.DataFrame) -> plt.Figure:
 
 
 def plot_log_returns(log_returns: pd.DataFrame) -> plt.Figure:
-    fig, ax = plt.subplots()
-    ax.set_title("Log Returns")
-    ax.set_xlabel("Dates")
-    ax.set_ylabel("Log Returns")
-    for column in log_returns.columns:
-        ax.plot(log_returns.index, log_returns[column], label = column)
-    ax.legend()
+    n = len(log_returns.columns)
+    fig, axes = plt.subplots(n, 1, figsize=(12, 8), sharex=True)
+    for ax, column in zip(axes, log_returns.columns):
+        ax.plot(log_returns.index, log_returns[column], 
+                linewidth=0.6, label=column)
+        ax.set_ylabel("Log Return")
+        ax.set_title(column)
+        ax.axhline(y=0, color="black", linewidth=0.5, linestyle="--")
+    axes[-1].set_xlabel("Date")
+    fig.suptitle("Daily Log Returns", fontsize=13, y=1.01)
+    plt.tight_layout()
     plt.show()
     return fig
 
 
 def plot_rolling_volatility(rolling_vol: pd.DataFrame) -> plt.Figure:
-    fig, ax = plt.subplots()
-    ax.set_title("Rolling Volatility (30 Day Window)")
-    ax.set_xlabel("Dates")
-    ax.set_ylabel("Annualised Volatility")
+    fig, ax = plt.subplots(figsize=(12, 5))
     for column in rolling_vol.columns:
-        ax.plot(rolling_vol.index, rolling_vol[column], label = column)
+        ax.plot(rolling_vol.index, rolling_vol[column] * 100, 
+                label=column, linewidth=0.8)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0f}%"))
+    ax.set_title("Rolling 30-Day Annualised Volatility")
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Annualised Volatility")
     ax.legend()
+    plt.tight_layout()
     plt.show()
     return fig
 
@@ -64,6 +71,7 @@ def plot_pca_summary(pca_results: pd.DataFrame) -> plt.Figure:
     ax1.set_title("PCA Summary")
 
     ax2.plot(range(1, len(pca_results["asset_names"]) + 1), pca_results["cumulative_variance"])
+    ax2.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
     ax2.axhline(y=0.9, linestyle="--", color="red", linewidth=0.8, label="90% threshold")
     ax2.set_xlabel("Components")
     ax2.set_ylabel("Cumulative contribution of all Components")
