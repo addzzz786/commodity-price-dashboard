@@ -2,7 +2,7 @@
 
 > Quantitative analysis of covariance, volatility, and underlying risk 
 > factors across crude oil (WTI), natural gas (Henry Hub), and copper 
-> futures — covering January 2020 to May 2026.
+> futures - covering January 2020 to May 2026.
 
 ---
 
@@ -99,7 +99,7 @@ commodity-price-dashboard/
 ## How to Run
 
 ```bash
-git clone https://github.com/YOURUSERNAME/commodity-price-dashboard.git
+git clone https://github.com/addzzz786/commodity-price-dashboard.git
 cd commodity-price-dashboard
 python -m venv venv
 venv\Scripts\Activate.ps1      # Windows
