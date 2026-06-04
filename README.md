@@ -66,10 +66,9 @@ All three series are rebased to 1.0 at January 2020 to allow direct
 comparison of relative performance across assets trading at incomparable 
 price levels.
 
-**Crude Oil (WTI)** experienced the most dramatic single event of the 
-period in March–April 2020, when a simultaneous demand collapse from 
+**Crude Oil (WTI)** experienced a dramatic event in March–April 2020, when a simultaneous demand collapse from 
 COVID-19 lockdowns and an OPEC+ price war between Saudi Arabia and Russia 
-caused WTI futures to briefly trade negative (-$37/bbl) — historically 
+caused WTI futures to briefly trade negative (-$37/bbl) - historically 
 unprecedented. Prices recovered steadily through 2021 as vaccination 
 rollouts restored mobility demand, before spiking sharply in early 2022 
 when Russia's invasion of Ukraine triggered a global energy security 
